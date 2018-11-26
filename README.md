@@ -10,7 +10,7 @@ Once Python 3 is installed, you will need to install Scrapy as well. Follow the 
 ### How to run
 Navigate to the project folder. In this program, navigate to `/Web-Crawler/src/webwithin`
 
-There are several formats that Scrapy supports, for example, CSV, JSON, and etc. The example of generate a JSON format file, you can run the command:
+There are several formats that Scrapy supports, for example, CSV, JSON, and etc. There are several crawlers that are available in this simple example. And to get, for example, JSON format of one case in this code, you can run the command:
 
 ```
 scrapy crawl cnn_news -o news.json -t json

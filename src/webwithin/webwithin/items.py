@@ -9,9 +9,17 @@ import scrapy
 
 
 class CnnNews(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
     title = scrapy.Field()
     content = scrapy.Field()
+
+class Fundrazr(scrapy.Item):
+	title = scrapy.Field()
+	currentAmount = scrapy.Field()
+	goal = scrapy.Field()
+	currencyType = scrapy.Field()
+	endDate = scrapy.Field()
+	contributors = scrapy.Field()
+	story = scrapy.Field()
+	url = scrapy.Field()
 
 

@@ -1,7 +1,7 @@
 import scrapy
 from webwithin.items import CnnNews
 
-class WebWithin(scrapy.Spider):
+class WebWithinCnn(scrapy.Spider):
     name = "cnn_news"
     
     # Start Url
@@ -18,9 +18,9 @@ class WebWithin(scrapy.Spider):
     
     def parseContent(self, response):
         item = CnnNews()
-        item['title'] = response.xpath("/html/body/div[contains(@class, 'pg-wrapper')]/article/div[contains(@class, 'l-container')]/h1/text()").extract()
-        content_sum = response.xpath("//*[@id='body-text']/div[contains(@class, 'l-container')]/div/p/text()").extract()
-        content_1 = response.xpath("//*[@id='body-text']/div[contains(@class, 'l-container')]/div/text()").extract()
-        content_2 = response.xpath("//*[@id='body-text']/div[contains(@class, 'l-container')]/div/div/text()").extract()
+        item['title'] = response.xpath("normalize-space(/html/body/div[contains(@class, 'pg-wrapper')]/article/div[contains(@class, 'l-container')]/h1/text())").extract()
+        content_sum = response.xpath("normalize-space(//*[@id='body-text']/div[contains(@class, 'l-container')]/div/p/text())").extract()
+        content_1 = response.xpath("normalize-space(//*[@id='body-text']/div[contains(@class, 'l-container')]/div/text())").extract()
+        content_2 = response.xpath("normalize-space(//*[@id='body-text']/div[contains(@class, 'l-container')]/div/div/text())").extract()
         item['content'] = content_sum + content_1 + content_2
         yield item

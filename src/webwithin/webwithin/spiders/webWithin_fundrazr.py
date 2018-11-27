@@ -24,14 +24,6 @@ class WebWithinFundrazr(scrapy.Spider):
         item['currencyType'] = response.xpath("//div[contains(@class, 'stats-primary with-goal')]/@title").extract()
         item['endDate'] = "".join(response.xpath("//div[contains(@id, 'campaign-stats')]//span[contains(@class,'stats-label hidden-phone')]/span[@class='nowrap']/text()").extract()).strip()
         item['contributors'] = response.xpath("//div[contains(@class, 'stats-secondary with-goal')]//span[contains(@class, 'donation-count stat')]/text()").extract()
-        story_list = response.xpath("normalize-space(//div[contains(@id, 'full-story')]/descendant//text())").extract()
+        item['story'] = response.xpath("normalize-space(//div[contains(@id, 'full-story')])").extract()
         item['url'] = response.xpath("//meta[@property='og:url']/@content").extract()
         yield item
-
-
-
-
-
-
-
-
